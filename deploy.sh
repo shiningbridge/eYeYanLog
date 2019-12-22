@@ -17,14 +17,12 @@ yarn build
 # 提交到历史区，$1 为运行 sh 时的第一个参数
 git add -A
 # if [!$1]
-if [ x$1 != x ]
-then
+if [ $# -eq 0 ]; then
     #...有参数
     git commit -m $1
 else
-then
     #...没有参数
-    git commit -m "quick deploy"
+    git commit -m 'quick deploy'
 fi
 
 # 提交到 master 分支
@@ -37,8 +35,6 @@ git push origin master
 
 # 或者不换目录,直接用subtree push 将 dist 文件夹提交到 gh-pages 分支
 git subtree push --prefix blog/.vuepress/dist origin gh-pages
-
-cd -
 
 # 退出命令
 exit 0
